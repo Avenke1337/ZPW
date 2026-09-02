@@ -1,2 +1,0 @@
-# ZPW
-Tymon Leszczyński
