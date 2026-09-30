@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Wprowadzenie Jquery</title>
+        <script
+			  src="https://code.jquery.com/jquery-4.0.0.min.js"
+			  integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+			  crossorigin="anonymous">
+        </script>
+        <script>
+            // $(document).on("keypress keyup keydown", function(event){
+            //     $('#eventType').text(event.type);
+            // })
+
+            // $(document).on("mousemove", function(event){
+            //     $('#pageX').text(event.pageX);
+            //     $('#pageY').text(event.pageY);
+            // })
+            $(document).on("keypress", function(event){
+                if(event.key == "d"){
+                    $('#kwadrat').css("margin-left", "+=50px");
+                }else if(event.key == "a"){
+                    $('#kwadrat').css("margin-left", "-=50px");
+                }else if(event.key == "w"){
+                    $('#kwadrat').css("margin-top", "-=50px");
+                }else if(event.key == "s"){
+                    $('#kwadrat').css("margin-top", "+=50px");
+                }else if(event.key == "j"){
+                    $('#kwadrat').css("background-color", "green");
+                }else if(event.key == " "){
+                    $('#kwadrat').css("width", "+=50px");
+                    $('#kwadrat').css("height", "+=50px");
+                }
+            })
+
+            $(document).ready(function(){
+                let posX = Math.floor(Math.random() * 1000 + 1);
+                let posY = Math.floor(Math.random() * 1000 + 1);
+                $('#jablko').css({
+                    "margin-left": posX + "px",
+                    "margin-top": posY + "px"
+                });
+            });
+            $(document).ready(function(){
+                if($('#jablko').css("margin-left") == $('#kwadrat').css("margin-left") &&
+                   $('#jablko').css("margin-top") == $('#kwadrat').css("margin-top")){
+                    alert("Złapałeś jabłko!");
+                }
+            });
+        </script>
+        <style>
+            #kwadrat{
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                position: absolute;
+            }
+
+            #jablko{
+                width: 20px;
+                height: 20px;
+                background-color: green;
+                position: absolute;
+            }
+         </style>
+    </head>
+    <body>
+        <!-- <input type="text" id="pole">
+
+        <p>
+            Typ zdarzenia:
+            <span id="eventType">---</span>
+        </p>
+
+        <p>
+            Pozycja myszy:
+            X = <span id="pageX">---</span>,
+            Y = <span id="pageY">---</span>
+        </p> -->
+        <div id="kwadrat"></div>
+        <div id="jablko"></div>
+    </body>
+</html>
