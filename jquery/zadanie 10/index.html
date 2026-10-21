@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+        src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
+        crossorigin="anonymous">
+    </script>
+    <script>
+        $(function() {
+            $('#newsletter').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#label').text('Dziękujemy za subskrypcję!');
+                } else {
+                    $('#label').text('wypisano');
+                }
+            });
+            $('#regulamin').change(function() {
+                if($(this).is(':checked')){
+                    $('#rejestracja').attr("disabled", false);
+                } else {
+                    $('#rejestracja').attr("disabled", true);
+                }
+            });
+
+            $('#tekst').on('input', function() {
+                $('#podglad').text($(this).val());
+            });
+            $('#komentarz').on('input', function() {
+                var licznik = 100 - $(this).val().length;
+                $('#licznik').text(licznik);
+                if(licznik < 10){
+                    $('#licznik').css('color', 'red');
+                } else {
+                    $('#licznik').css('color', 'black');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="checkbox" name="newsletter" id="newsletter">
+    <label for="newsletter" id="label">Chcę newsletter</label>
+    <form>
+        
+    </form>
+    <input type="checkbox" name="regulamin" id="regulamin">
+    <label for="regulamin">Akceptuję regulamin</label>
+    <button id="rejestracja"type="submit" disabled>Zarejestruj</button>
+    <input type="text" name="tekst" id="tekst">
+    <p>Podgląd:<span id="podglad"></span></p>
+    <textarea name="komentarz" id="komentarz" maxlength="100"></textarea>
+    <p id="licznik">100</p>
+</body>
+</html>
