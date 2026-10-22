@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+     <script>
+        $(function(){
+            $('#sprawdz').click(function(){
+                var name = $('#name').val().trim();
+                if(name === ''){
+                    $('#blad').text('Pole jest wymagane');
+                } else {
+                    $('#blad').text('Twoje imie to: ' + name);
+                }
+            }); 
+            $('#wyslij').click(function(event){
+                event.preventDefault();
+                var nazwisko = $('#nazwisko').val().trim();
+                if(nazwisko === ''){
+                    $('#nazwiskoBlad').text('Podaj nazwisko').css('color', 'red');
+                } else {
+                    $('#nazwiskoBlad').text("Wysłano formularz").css('color', 'green');
+                }
+            });
+            $('#sprawdzWiek').click(function(){
+                var wiek = Number($('#wiek').val().trim());
+                if(isNaN(wiek)){
+                    $('#wiekBlad').text('Wiek musi być liczbą');
+                } else if(wiek > 0) {
+                    $('#wiekBlad').text('Masz: ' + wiek + ' lat.');
+                }
+            });
+            $('#sprawdzOcena').click(function(){
+                var ocena = Number($('#ocena').val().trim());
+                if(isNaN(ocena)){
+                    $('#ocenaBlad').text('Ocena musi być liczbą');
+                } else if(ocena >= 1 && ocena <= 6 && ocena != " ") {
+                    $('#ocenaBlad').text('Zapisano ocenę: ' + ocena);
+                } else {
+                    $('#ocenaBlad').text('Ocena musi być z zakresu od 1 do 6');
+                }
+            });
+        })
+     </script>
+</head>
+<body>
+    <input type="text" id="name">
+    <button id="sprawdz">Sprawdź</button>
+    <p id="blad"></p>
+    <form>
+        <input type="text" name="nazwisko" id="nazwisko">
+        <button type="submit" id="wyslij">Wyślij</button>
+    </form>
+    <p id="nazwiskoBlad"></p>
+    <hr>
+    <input type="text" name="wiek" id="wiek">
+    <button id="sprawdzWiek">Sprawdź</button>
+    <p id="wiekBlad"></p>
+    <hr>
+    <input type="text" name="ocena" id="ocena">
+    <button id="sprawdzOcena">Sprawdź</button>
+    <p id="ocenaBlad"></p>
+</body>
+</html>

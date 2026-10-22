@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,4 +62,69 @@
     </select>
     <p id="doZaplaty"></p>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#formularz').submit(function(e) {
+                e.preventDefault();
+                if ($('#nick').val() == '') {
+                    $('#info').text('Nie podano nicku');
+                } else {
+                    $('#info').text('Witaj ' + $('#nick').val());
+                }
+            });
+            $('#formularz2').submit(function(e) {
+                e.preventDefault();
+                if ($('#password').val().length < 6) {
+                    $('#info').text('Hasło jest za krótkie').css('color', 'red');
+                } else {
+                    $('#info').text('Zalogowano').css('color', 'green');
+                }
+            });
+            $('#kolor').change(function() {
+                let kolor = $(this).val();
+                $('body').css('background-color', kolor);
+            });
+            $('#rozmiar').change(function() {
+                let rozmiar = $(this).val();
+                $('#doZaplaty').text('Do zapłaty: ' + rozmiar + ' zł');
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="formularz">
+        <input type="text" id="nick">
+    <button type="submit">Wyslij</button>
+    </form>
+    <hr></hr>
+    <form id="formularz2">
+        <input type="email" name="email" id="email"><br>
+        <input type="password" name="password" id="password">
+    <button type="submit">Wyslij</button>
+    </form>
+
+    <p id="info"></p>
+    <hr></hr>
+    <select name="kolor" id="kolor">
+        <option value="red">Czerwony</option>
+        <option value="green">Zielony</option>
+        <option value="blue">Niebieski</option>
+    </select>
+    <hr></hr>
+    <select name="rozmiar" id="rozmiar">
+        <option value="20">Mały</option>
+        <option value="30">Średni</option>
+        <option value="40">Duży</option>
+    </select>
+    <p id="doZaplaty"></p>
+</body>
+>>>>>>> 8f8d4665cb75a335f21b82f600ad70b288f30052
 </html>
